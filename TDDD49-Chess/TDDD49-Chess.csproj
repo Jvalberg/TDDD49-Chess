@@ -63,6 +63,7 @@
       <DependentUpon>ChessSquare.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChessSquareViewModel.cs" />
+    <Compile Include="View\Converters\IndexToBackgroundConverter.cs" />
     <Compile Include="View\Converters\IndexToPositionConverter.cs" />
     <Compile Include="View\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -119,6 +120,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\Resources\b_bishop.png" />
+    <Resource Include="View\Resources\b_king.png" />
+    <Resource Include="View\Resources\b_knight.png" />
+    <Resource Include="View\Resources\b_pawn.png" />
+    <Resource Include="View\Resources\b_queen.png" />
+    <Resource Include="View\Resources\b_rook.png" />
+    <Resource Include="View\Resources\w_bishop.png" />
+    <Resource Include="View\Resources\w_king.png" />
+    <Resource Include="View\Resources\w_knight.png" />
+    <Resource Include="View\Resources\w_pawn.png" />
+    <Resource Include="View\Resources\w_queen.png" />
+    <Resource Include="View\Resources\w_rook.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

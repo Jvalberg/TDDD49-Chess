@@ -7,9 +7,14 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Border BorderThickness="4" BorderBrush="Black">
-            <Grid Background="BurlyWood">
-                
-            </Grid>
+            <Rectangle>
+                <Rectangle.Fill>
+                    <MultiBinding Converter="{StaticResource BackgroundConverter}">
+                        <Binding Path="X" />
+                        <Binding Path="Y" />
+                    </MultiBinding>
+                </Rectangle.Fill>
+            </Rectangle>
         </Border>
     </Grid>
 </UserControl>
