@@ -5,7 +5,16 @@
         Title="Chess" Height="871" Width="1091"
         x:Name="mainWindow">
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <view:MenuView Grid.Row="0"
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"/>
+        <ScrollViewer Grid.Row="1"
+            VerticalScrollBarVisibility="Auto" 
+            HorizontalScrollBarVisibility="Auto">
             <view:ChessBoardView />
         </ScrollViewer>
     </Grid>
