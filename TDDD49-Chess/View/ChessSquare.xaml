@@ -6,15 +6,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Border BorderThickness="4" BorderBrush="Black">
-            <Rectangle>
-                <Rectangle.Fill>
-                    <MultiBinding Converter="{StaticResource BackgroundConverter}">
-                        <Binding Path="X" />
-                        <Binding Path="Y" />
-                    </MultiBinding>
-                </Rectangle.Fill>
-            </Rectangle>
+        <Border BorderBrush="Black">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderThickness" Value="2" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Grid>
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <MultiBinding Converter="{StaticResource BackgroundConverter}">
+                            <Binding Path="X" />
+                            <Binding Path="Y" />
+                        </MultiBinding>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Image.Source>
+                        <MultiBinding Converter="{StaticResource PieceDescriptionToImageConverter}">
+                            <Binding Path="Piece" />
+                            <Binding Path="Side" />
+                        </MultiBinding>
+                    </Image.Source>
+                </Image>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

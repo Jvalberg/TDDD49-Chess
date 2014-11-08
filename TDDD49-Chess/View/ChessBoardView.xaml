@@ -9,7 +9,7 @@
              Width="{Binding BoardWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
              Height="{Binding BoardHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
              DataContext="{StaticResource ChessboardViewModel}">
-    <Grid Background="CornflowerBlue" >
+    <Grid Background="Black" >
         <ItemsControl ItemsSource="{Binding ChessSquares}">
             <!-- The control to draw the squares on -->
             <ItemsControl.ItemsPanel>
@@ -17,7 +17,7 @@
                     <Canvas />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            
+
             <!-- Position each square on the control -->
             <ItemsControl.ItemContainerStyle>
                 <Style TargetType="{x:Type FrameworkElement}">
@@ -39,12 +39,12 @@
                     </Setter>
                 </Style>
             </ItemsControl.ItemContainerStyle>
-            
+
             <!-- The control each square is -->
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <view:ChessSquare Width="{Binding Path=SquareWidth, Source={StaticResource ChessboardViewModel}}"
-                                      Height="{Binding Path=SquareHeight, Source={StaticResource ChessboardViewModel}}"/>
+                                          Height="{Binding Path=SquareHeight, Source={StaticResource ChessboardViewModel}}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

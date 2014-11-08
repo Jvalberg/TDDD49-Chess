@@ -57,10 +57,10 @@ namespace TDDD49_Chess.View
 
         public ChessboardViewModel()
         {
-            Initialize();
+            SetupBoard();
         }
 
-        public void Initialize()
+        public void SetupBoard()
         {
             BoardWidth = 768;
             BoardHeight = 768;
@@ -72,6 +72,58 @@ namespace TDDD49_Chess.View
                             X = x,
                             Y = y
                         });
+
+            SetupCoreSidePieces(ChessColor.BLACK, 0);
+            SetupPawnSidePieces(ChessColor.BLACK, 1);
+            SetupPawnSidePieces(ChessColor.WHITE, 6);
+            SetupCoreSidePieces(ChessColor.WHITE, 7);
+
+        }
+
+        private void SetupCoreSidePieces(int side, int yoffset)
+        {
+            GetSquare(0, yoffset).Piece = ChessPiece.ROOK;
+            GetSquare(0, yoffset).Side = side;
+            GetSquare(1, yoffset).Piece = ChessPiece.BISHOP;
+            GetSquare(1, yoffset).Side = side;
+            GetSquare(2, yoffset).Piece = ChessPiece.KNIGHT;
+            GetSquare(2, yoffset).Side = side;
+            GetSquare(3, yoffset).Piece = ChessPiece.QUEEN;
+            GetSquare(3, yoffset).Side = side;
+            GetSquare(4, yoffset).Piece = ChessPiece.KING;
+            GetSquare(4, yoffset).Side = side;
+            GetSquare(5, yoffset).Piece = ChessPiece.KNIGHT;
+            GetSquare(5, yoffset).Side = side;
+            GetSquare(6, yoffset).Piece = ChessPiece.BISHOP;
+            GetSquare(6, yoffset).Side = side;
+            GetSquare(7, yoffset).Piece = ChessPiece.ROOK;
+            GetSquare(7, yoffset).Side = side;
+        }
+
+        private void SetupPawnSidePieces(int side, int yoffset)
+        {
+            GetSquare(0, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(0, yoffset).Side = side;
+            GetSquare(1, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(1, yoffset).Side = side;
+            GetSquare(2, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(2, yoffset).Side = side;
+            GetSquare(3, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(3, yoffset).Side = side;
+            GetSquare(4, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(4, yoffset).Side = side;
+            GetSquare(5, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(5, yoffset).Side = side;
+            GetSquare(6, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(6, yoffset).Side = side;
+            GetSquare(7, yoffset).Piece = ChessPiece.PAWN;
+            GetSquare(7, yoffset).Side = side;
+        }
+
+        private ChessSquareViewModel GetSquare(int x, int y)
+        {
+            int arrayPos = x * 8 + y;
+            return ChessSquares[arrayPos];
         }
 
         #region Property Changed

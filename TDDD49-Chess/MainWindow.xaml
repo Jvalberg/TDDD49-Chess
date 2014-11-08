@@ -5,6 +5,9 @@
         Title="Chess" Height="871" Width="1091"
         x:Name="mainWindow">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/Resources/background.jpg" Stretch="None" />
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="22"/>
             <RowDefinition Height="*" />
@@ -15,7 +18,12 @@
         <ScrollViewer Grid.Row="1"
             VerticalScrollBarVisibility="Auto" 
             HorizontalScrollBarVisibility="Auto">
-            <view:ChessBoardView />
+            <Border BorderThickness="30"
+                    BorderBrush="BurlyWood"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <view:ChessBoardView />
+            </Border>
         </ScrollViewer>
     </Grid>
 </Window>

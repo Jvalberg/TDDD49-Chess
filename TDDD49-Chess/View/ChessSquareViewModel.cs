@@ -31,8 +31,32 @@ namespace TDDD49_Chess.View
             }
         }
 
-        public float Width { get { return 32.0f; } }
-        public float Height { get { return 32.0f; } }
+        private int _piece;
+        public int Piece
+        {
+            get { return _piece; }
+            set
+            {
+                _piece = value;
+                OnPropertyChanged("Piece");
+            }
+        }
+
+        private int _side;
+        public int Side
+        {
+            get { return _side; }
+            set
+            {
+                _side = value;
+                OnPropertyChanged("Side");
+            }
+        }
+
+        public ChessSquareViewModel()
+        {
+            Piece = ChessPiece.NONE;
+        }
 
         #region Property Changed
 

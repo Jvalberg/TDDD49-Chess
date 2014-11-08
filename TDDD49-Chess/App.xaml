@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:view="clr-namespace:TDDD49_Chess.View"
              xmlns:converters="clr-namespace:TDDD49_Chess.View.Converters"
+             
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <view:ChessboardViewModel x:Key="ChessboardViewModel" x:Name="ChessboardViewModel"  />
@@ -11,6 +12,7 @@
         
         
         <!-- Chess piece images -->
+        <converters:PieceDescToImageConverter x:Key="PieceDescriptionToImageConverter" x:Name="PieceDescriptionToImageConverter" />
         <BitmapImage x:Key="Image_WhiteKing" 
                      UriSource="/View/Resources/w_king.png"></BitmapImage>
         <BitmapImage x:Key="Image_WhiteQueen" 
@@ -34,13 +36,11 @@
                      UriSource="/View/Resources/b_pawn.png"></BitmapImage>
         
         <!-- Chess board resources -->
-        <Color x:Key="Even_Square_Color" R="255" G="206" B="158" />
-        <Color x:Key="Odd_Square_Color" R="209" G="139" B="71" />
-        <SolidColorBrush x:Key="EvenBrush" Color="{StaticResource Even_Square_Color}" />
-        <SolidColorBrush x:Key="OddBrush" Color="{StaticResource Odd_Square_Color}" />
+        <Color x:Key="Even_Square_Color" R="255" G="206" B="158" A="255" />
+        <Color x:Key="Odd_Square_Color" R="209" G="139" B="71" A="255" />
         <converters:IndexToBackgroundConverter x:Key="BackgroundConverter"
-                                               OddColor="{StaticResource EvenBrush}"
-                                               EvenColor="{StaticResource OddBrush}">
+                                               OddColor="{StaticResource Odd_Square_Color}"
+                                               EvenColor="{StaticResource Even_Square_Color}">
         </converters:IndexToBackgroundConverter>
         
     </Application.Resources>

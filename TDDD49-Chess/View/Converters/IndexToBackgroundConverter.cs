@@ -11,19 +11,19 @@ namespace TDDD49_Chess.View.Converters
 {
     public class IndexToBackgroundConverter : DependencyObject, IMultiValueConverter
     {
-        public static readonly DependencyProperty OddColorProperty = 
-            DependencyProperty.Register("OddColor", typeof(SolidColorBrush), typeof(IndexToBackgroundConverter));
-        public SolidColorBrush OddColor
+        public static readonly DependencyProperty OddColorProperty =
+            DependencyProperty.Register("OddColor", typeof(Color), typeof(IndexToBackgroundConverter));
+        public Color OddColor
         {
-            get { return (SolidColorBrush)this.GetValue(OddColorProperty); }
+            get { return (Color)this.GetValue(OddColorProperty); }
             set { this.SetValue(OddColorProperty, value); }
         }
 
         public static readonly DependencyProperty EvenColorProperty =
-            DependencyProperty.Register("EvenColor", typeof(SolidColorBrush), typeof(IndexToBackgroundConverter));
-        public SolidColorBrush EvenColor
+            DependencyProperty.Register("EvenColor", typeof(Color), typeof(IndexToBackgroundConverter));
+        public Color EvenColor
         {
-            get { return (SolidColorBrush)this.GetValue(EvenColorProperty); }
+            get { return (Color)this.GetValue(EvenColorProperty); }
             set { this.SetValue(EvenColorProperty, value); }
         }
 
@@ -33,9 +33,9 @@ namespace TDDD49_Chess.View.Converters
             var x = (int)values[0];
             var y = (int)values[1];
             if ((x + y) % 2 == 0)
-                return EvenColor;
+                return new SolidColorBrush(EvenColor);
             else
-                return OddColor;
+                return new SolidColorBrush(OddColor);
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
