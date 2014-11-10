@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:TDDD49_Chess.View"
-        Title="Chess" Height="871" Width="1091"
+        Title="Chess" Height="900" Width="1400"
         x:Name="mainWindow">
     <Grid>
         <Grid.Background>

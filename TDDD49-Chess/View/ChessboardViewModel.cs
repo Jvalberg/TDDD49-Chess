@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using TDDD49_Chess.View.Commands;
 
 namespace TDDD49_Chess.View
 {
@@ -55,10 +57,50 @@ namespace TDDD49_Chess.View
             }
         }
 
+        #region Commands
+
+        private ICommand _mouseDownCommand;
+        public ICommand MouseDownCommand { get { return _mouseDownCommand; } }
+
+        private ICommand _mouseUpCommand;
+        public ICommand MouseUpCommand { get { return _mouseUpCommand; } }
+
+        #endregion
+
         public ChessboardViewModel()
         {
             SetupBoard();
+            _mouseDownCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseDown);
+            _mouseUpCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseUp);
         }
+
+        #region Commands
+
+        private Boolean _isDragging;
+        private ChessSquareViewModel _draggedChessSquare;
+
+        private void HandleSquareMouseDown(ChessSquareViewModel vm)
+        {
+            _isDragging = true;
+            _draggedChessSquare = vm;
+        }
+
+        private void HandleSquareMouseUp(ChessSquareViewModel vm)
+        {
+            if(_isDragging)
+            {
+                _isDragging = false;
+                if(vm != _draggedChessSquare)
+                {
+                    vm.Piece = _draggedChessSquare.Piece;
+                    vm.Side = _draggedChessSquare.Side;
+                    _draggedChessSquare.Piece = ChessPiece.NONE;
+                    _draggedChessSquare.Side = ChessColor.NONE;
+                }
+            }
+        }
+
+        #endregion
 
         public void SetupBoard()
         {

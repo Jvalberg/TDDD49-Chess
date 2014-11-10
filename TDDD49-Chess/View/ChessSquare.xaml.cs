@@ -24,5 +24,10 @@ namespace TDDD49_Chess.View
         {
             InitializeComponent();
         }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

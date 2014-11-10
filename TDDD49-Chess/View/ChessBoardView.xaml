@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:TDDD49_Chess.View"
+             xmlns:util="clr-namespace:TDDD49_Chess.View.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" 
              Width="{Binding BoardWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -43,8 +44,10 @@
             <!-- The control each square is -->
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <view:ChessSquare Width="{Binding Path=SquareWidth, Source={StaticResource ChessboardViewModel}}"
-                                          Height="{Binding Path=SquareHeight, Source={StaticResource ChessboardViewModel}}"/>
+                    <Grid>
+                        <view:ChessSquare Width="{Binding Path=SquareWidth, Source={StaticResource ChessboardViewModel}}"
+                                          Height="{Binding Path=SquareHeight, Source={StaticResource ChessboardViewModel}}" />
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
