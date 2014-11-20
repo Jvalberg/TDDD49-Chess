@@ -58,6 +58,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game\ChessEngine.cs" />
+    <Compile Include="Game\ChessEngineLocator.cs" />
+    <Compile Include="Game\GameObjects\Board.cs" />
+    <Compile Include="Game\GameObjects\Color.cs" />
+    <Compile Include="Game\GameObjects\Move.cs" />
+    <Compile Include="Game\IChessEngine.cs" />
+    <Compile Include="Game\Players\AIChessPlayer.cs" />
+    <Compile Include="Game\Players\ChessObserver.cs" />
+    <Compile Include="Game\Players\HumanChessPlayer.cs" />
+    <Compile Include="Game\Players\IChessObserver.cs" />
+    <Compile Include="Game\Players\IChessPlayer.cs" />
+    <Compile Include="Game\Rules\BishopMovementRule.cs" />
+    <Compile Include="Game\Rules\ColorWonGameStateRule.cs" />
+    <Compile Include="Game\Rules\DrawGameStateRule.cs" />
+    <Compile Include="Game\Rules\GameRules.cs" />
+    <Compile Include="Game\Rules\IGameRules.cs" />
+    <Compile Include="Game\Rules\IGameStateRule.cs" />
+    <Compile Include="Game\Rules\IMovementRule.cs" />
+    <Compile Include="Game\GameObjects\Pieces.cs" />
+    <Compile Include="Game\GameObjects\Point.cs" />
+    <Compile Include="Game\Rules\KingMovementRule.cs" />
+    <Compile Include="Game\Rules\KnightMovementRule.cs" />
+    <Compile Include="Game\Rules\PawnMovementRule.cs" />
+    <Compile Include="Game\Rules\QueenMovementRule.cs" />
+    <Compile Include="Game\Rules\RookMovementRule.cs" />
+    <Compile Include="Game\GameObjects\Square.cs" />
     <Compile Include="View\ChessColor.cs" />
     <Compile Include="View\ChessPiece.cs" />
     <Compile Include="View\ChessboardView.xaml.cs">
@@ -146,9 +172,7 @@
     <Resource Include="View\Resources\w_queen.png" />
     <Resource Include="View\Resources\w_rook.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Game\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
