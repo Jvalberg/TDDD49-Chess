@@ -70,8 +70,8 @@
     <Compile Include="Game\Players\IChessObserver.cs" />
     <Compile Include="Game\Players\IChessPlayer.cs" />
     <Compile Include="Game\Rules\BishopMovementRule.cs" />
-    <Compile Include="Game\Rules\ColorWonGameStateRule.cs" />
-    <Compile Include="Game\Rules\DrawGameStateRule.cs" />
+    <Compile Include="Game\Rules\CheckGameStateRule.cs" />
+    <Compile Include="Game\Rules\CheckmateGameStateRule.cs" />
     <Compile Include="Game\Rules\GameRules.cs" />
     <Compile Include="Game\Rules\IGameRules.cs" />
     <Compile Include="Game\Rules\IGameStateRule.cs" />
@@ -84,6 +84,7 @@
     <Compile Include="Game\Rules\QueenMovementRule.cs" />
     <Compile Include="Game\Rules\RookMovementRule.cs" />
     <Compile Include="Game\GameObjects\Square.cs" />
+    <Compile Include="Game\Rules\StalemateGameStateRule.cs" />
     <Compile Include="View\ChessColor.cs" />
     <Compile Include="View\ChessPiece.cs" />
     <Compile Include="View\ChessboardView.xaml.cs">

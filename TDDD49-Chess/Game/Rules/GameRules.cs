@@ -28,16 +28,13 @@ namespace TDDD49_Chess.Game.Rules
             _movementRules[Pieces.PAWN] = new PawnMovementRule();
 
             _gameStateRules = new IGameStateRule[3];
-            _gameStateRules[GameStateRule.DRAW] = new DrawGameStateRule();
-            _gameStateRules[GameStateRule.WHITE_WON] = new ColorWonGameStateRule(Color.WHITE);
-            _gameStateRules[GameStateRule.BLACK_WON] = new ColorWonGameStateRule(Color.BLACK);
         }
 
-        public Boolean IsGameState(int state, Board board)
+        public Boolean IsGameState(Board board, int state, int color)
         {
             if (!GameStateRule.Exists(state))
                 throw new Exception("IsGameState failed. The Specified state does not exist.");
-            return _gameStateRules[state].IsTrue(board);
+            return _gameStateRules[state].IsTrue(board, color);
         }
 
         public IList<Point> ValidMoves(Board board, Point coordinates)

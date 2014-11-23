@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TDDD49_Chess.Game.GameObject;
 
 namespace TDDD49_Chess.Game.Rules
 {
-    public class DrawGameStateRule : IGameStateRule
+    public class CheckmateGameStateRule : IGameStateRule
     {
-        public bool IsTrue(Board board)
+        public bool IsTrue(GameObject.Board board, int color)
         {
             throw new NotImplementedException();
         }

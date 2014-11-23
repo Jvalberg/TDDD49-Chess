@@ -9,6 +9,6 @@ namespace TDDD49_Chess.Game.Rules
 {
     public interface IGameRules : IMovementRule
     {
-        Boolean IsGameState(int state, Board board);
+        Boolean IsGameState(Board board, int state, int color);
     }
 }

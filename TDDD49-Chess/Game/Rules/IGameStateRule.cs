@@ -21,6 +21,6 @@ namespace TDDD49_Chess.Game.Rules
 
     public interface IGameStateRule
     {
-        Boolean IsTrue(Board board);
+        Boolean IsTrue(Board board, int color);
     }
 }

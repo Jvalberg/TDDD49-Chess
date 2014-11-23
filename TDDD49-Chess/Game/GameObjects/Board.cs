@@ -24,6 +24,17 @@ namespace TDDD49_Chess.Game.GameObject
                     Squares[i, x] = board[i, x];
         }
 
+        /// <summary>
+        /// Returns all the pieces belong to the specified color.
+        /// If the color is "NONE", all pieces are returned.
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public IList<Point> GetAllPieces(int color)
+        {
+            return Board.GetAllPieces(this, color);
+        }
+
         public void Clear()
         {
             Board.Clear(this);
@@ -57,6 +68,30 @@ namespace TDDD49_Chess.Game.GameObject
         /// Black pieces move downward
         /// </summary>
         public static int BLACK_DIRECTION = 1;
+
+        /// <summary>
+        /// Returns all the pieces belong to the specified color.
+        /// If the color is "NONE", all pieces are returned.
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static List<Point> GetAllPieces(Board board, int color)
+        {
+            var pieces = new List<Point>();
+            for(int x = 0; x < 8; x++)
+            {
+                for(int y = 0; y < 8; y++)
+                {
+                    if(board.Squares[x, y].Piece != Pieces.NONE)
+                    {
+                        if (color == Color.NONE ||
+                            board.Squares[x, y].Color == color)
+                            pieces.Add(new Point(x, y));
+                    }
+                }
+            }
+            return pieces;
+        }
 
         public static void Clear(Board board)
         {
