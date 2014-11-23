@@ -23,10 +23,10 @@ namespace TDDD49_Chess.Test.GameTests.RuleTests
 
             //From the initial position two moves should be possible. One step forward, and two steps forward.
             Assert.AreEqual(2, validMoves.Count);
-            Assert.IsTrue(foundPosition(validMoves, 
+            Assert.IsTrue(TestHelper.FoundPosition(validMoves, 
                 new Point() { X = startingX, 
                     Y = Board.WHITE_START_PAWN_ROW + Board.WHITE_DIRECTION }));
-            Assert.IsTrue(foundPosition(validMoves, 
+            Assert.IsTrue(TestHelper.FoundPosition(validMoves, 
                 new Point() { X = startingX, 
                     Y = Board.WHITE_START_PAWN_ROW + 2 * Board.WHITE_DIRECTION }));
 
@@ -42,7 +42,7 @@ namespace TDDD49_Chess.Test.GameTests.RuleTests
 
             //Should only be able to move one step forward.
             Assert.AreEqual(1, validMoves.Count);
-            Assert.IsTrue(foundPosition(validMoves, new Point() { X = startingX, Y = Board.WHITE_START_PAWN_ROW + 2*Board.WHITE_DIRECTION }));
+            Assert.IsTrue(TestHelper.FoundPosition(validMoves, new Point() { X = startingX, Y = Board.WHITE_START_PAWN_ROW + 2 * Board.WHITE_DIRECTION }));
         }
 
         [TestMethod]
@@ -89,16 +89,7 @@ namespace TDDD49_Chess.Test.GameTests.RuleTests
             IList<Point> validMoves = _pawnMovement.ValidMoves(_board, new Point() { X = startingX, Y = 3 });
 
             Assert.AreEqual(2, validMoves.Count);
-            Assert.IsTrue(foundPosition(validMoves, new Point() { X = 2, Y = 2 }));
-        }
-
-        private Boolean foundPosition(IList<Point> list, Point position)
-        {
-            foreach (var p in list)
-                if (p.X == position.X &&
-                    p.Y == position.Y)
-                    return true;
-            return false;
+            Assert.IsTrue(TestHelper.FoundPosition(validMoves, new Point() { X = 2, Y = 2 }));
         }
     }
 }
