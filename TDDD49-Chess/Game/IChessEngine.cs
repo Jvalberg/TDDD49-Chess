@@ -26,7 +26,7 @@ namespace TDDD49_Chess.Game
     /// </summary>
     public interface IPlayerChessEngine : IReadOnlyChessEngine
     {
-        Boolean TryMove(Point from, Point to);
+        Boolean TryMove(IChessPlayer player, Point from, Point to);
         Boolean NewGame();
     }
 
@@ -36,6 +36,7 @@ namespace TDDD49_Chess.Game
     /// </summary>
     public interface IReadOnlyChessEngine
     {
+        Boolean IsActiveGame();
         Boolean IsGameOver();
         Boolean IsCurrentTurn(int color);
         Board GetBoardCopy();

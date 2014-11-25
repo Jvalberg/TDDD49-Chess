@@ -54,6 +54,17 @@ namespace TDDD49_Chess.View
             }
         }
 
+        private Boolean _validMove;
+        public Boolean ValidMove
+        {
+            get { return _validMove; }
+            set
+            {
+                _validMove = value;
+                OnPropertyChanged("ValidMove");
+            }
+        }
+
         public ChessSquareViewModel()
         {
             Piece = ChessPiece.NONE;

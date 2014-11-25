@@ -13,10 +13,19 @@ namespace TDDD49_Chess.Game.Players
     /// </summary>
     public class GameUpdatedArgs
     {
+        private Move move;
+        private int _turn_color;
+
+        public GameUpdatedArgs(Move move, int _turn_color)
+        {
+            // TODO: Complete member initialization
+            this.move = move;
+            this._turn_color = _turn_color;
+        }
 
     }
 
-    public interface IChessObserver
+    public interface IChessObserver : IReadOnlyChessEngine
     {
         /// <summary>
         /// Registers this object as an observer in the engine.
@@ -26,14 +35,6 @@ namespace TDDD49_Chess.Game.Players
         /// <returns></returns>
         Boolean RegisterAsObserver();
         Boolean Unregister();
-
-        /// <summary>
-        /// A reference to the chess engine where 
-        /// all data from the ongoing chess game can
-        /// be fetched from.
-        /// </summary>
-        /// <returns></returns>
-        IReadOnlyChessEngine ChessEngine { get; }
 
         /// <summary>
         /// A method to be implemented by the observers.

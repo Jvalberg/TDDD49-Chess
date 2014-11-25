@@ -7,8 +7,10 @@ using TDDD49_Chess.Game.GameObject;
 
 namespace TDDD49_Chess.Game.Rules
 {
-    public interface IGameRules : IMovementRule
+    public interface IGameRules
     {
         Boolean IsGameState(Board board, int state, int color);
+        IMovementRules MovementRules { get; }
+        IList<Point> FilterCheckMoves(Board board, Point point, IList<Point> moves);
     }
 }

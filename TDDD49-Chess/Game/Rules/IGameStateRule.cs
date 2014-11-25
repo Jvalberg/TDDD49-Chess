@@ -9,9 +9,9 @@ namespace TDDD49_Chess.Game.Rules
 {
     public class GameStateRule
     {
-        public static int DRAW = 0;
-        public static int BLACK_WON = 1;
-        public static int WHITE_WON = 2;
+        public static int STALEMATE = 0;
+        public static int CHECK = 1;
+        public static int CHECKMATE = 2;
 
         public static Boolean Exists(int state)
         {

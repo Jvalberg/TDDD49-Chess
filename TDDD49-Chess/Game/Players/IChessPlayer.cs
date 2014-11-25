@@ -17,7 +17,7 @@ namespace TDDD49_Chess.Game.Players
         /// <param name="color"></param>
         /// <returns></returns>
         Boolean RegisterAsPlayer(int color);
-
-        new IPlayerChessEngine ChessEngine { get; }
+        Boolean TryMove(Point from, Point to);
+        Boolean NewGame();
     }
 }

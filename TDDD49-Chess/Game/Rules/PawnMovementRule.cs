@@ -43,15 +43,20 @@ namespace TDDD49_Chess.Game.Rules
                 }
 
                 //Capturing with a pawn.
-                if (!Pieces.IsNotPiece(board.Squares[coordinates.X + 1, coordinates.Y + direction].Piece)
-                    && board.Squares[coordinates.X + 1, coordinates.Y + direction].Color != square.Color)
+                Point possible = new Point(coordinates.X + 1, coordinates.Y + direction);
+                if (insideBoardBounds(possible) &&
+                    !Pieces.IsNotPiece(board.Squares[possible.X, possible.Y].Piece) &&
+                    board.Squares[possible.X, possible.Y].Color != square.Color)
                 {
-                    validMoves.Add(new Point(coordinates.X + 1, coordinates.Y + direction));
+                    validMoves.Add(possible);
                 }
-                if (!Pieces.IsNotPiece(board.Squares[coordinates.X - 1, coordinates.Y + direction].Piece)
-                    && board.Squares[coordinates.X + 1, coordinates.Y + direction].Color != square.Color)
+
+                possible = new Point(coordinates.X - 1, coordinates.Y + direction);
+                if (insideBoardBounds(possible) &&
+                    !Pieces.IsNotPiece(board.Squares[possible.X, possible.Y].Piece) &&
+                    board.Squares[possible.X, possible.Y].Color != square.Color)
                 {
-                    validMoves.Add(new Point(coordinates.X - 1, coordinates.Y + direction));
+                    validMoves.Add(possible);
                 }
             }
 
@@ -60,7 +65,7 @@ namespace TDDD49_Chess.Game.Rules
 
         private bool insideBoardBounds(Point point)
         {
-            return point.Y >= Board.BLACK_START_PAWN_ROW && point.Y <= Board.WHITE_START_PAWN_ROW;
+            return point.Y >= Board.BLACK_START_PAWN_ROW && point.Y <= Board.WHITE_START_PAWN_ROW && point.X >= 0 && point.X <= 7;
         }
     }
 }

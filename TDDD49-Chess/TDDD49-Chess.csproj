@@ -78,8 +78,10 @@
     <Compile Include="Game\Rules\IMovementRule.cs" />
     <Compile Include="Game\GameObjects\Pieces.cs" />
     <Compile Include="Game\GameObjects\Point.cs" />
+    <Compile Include="Game\Rules\IMovementRules.cs" />
     <Compile Include="Game\Rules\KingMovementRule.cs" />
     <Compile Include="Game\Rules\KnightMovementRule.cs" />
+    <Compile Include="Game\Rules\MovementRules.cs" />
     <Compile Include="Game\Rules\PawnMovementRule.cs" />
     <Compile Include="Game\Rules\QueenMovementRule.cs" />
     <Compile Include="Game\Rules\RookMovementRule.cs" />
@@ -102,6 +104,7 @@
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MenuViewModel.cs" />
+    <Compile Include="View\PlayerViewModel.cs" />
     <Compile Include="View\Utilities\MouseEventToCommand.cs" />
     <Compile Include="View\Commands\RelayCommand.cs" />
     <Page Include="MainWindow.xaml">

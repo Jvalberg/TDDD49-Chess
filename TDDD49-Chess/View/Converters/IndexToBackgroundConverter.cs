@@ -32,6 +32,14 @@ namespace TDDD49_Chess.View.Converters
         {
             var x = (int)values[0];
             var y = (int)values[1];
+            var validMove = (Boolean)values[2];
+            if(validMove != null)
+            {
+                if(validMove)
+                {
+                    return Brushes.Crimson;
+                }
+            }
             if ((x + y) % 2 == 0)
                 return new SolidColorBrush(EvenColor);
             else

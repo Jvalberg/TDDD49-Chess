@@ -8,14 +8,10 @@ namespace TDDD49_Chess.Game.Players
 {
     public class AIChessPlayer : IChessPlayer
     {
+
         public bool RegisterAsPlayer(int color)
         {
             throw new NotImplementedException();
-        }
-
-        public IPlayerChessEngine ChessEngine
-        {
-            get { throw new NotImplementedException(); }
         }
 
         public bool RegisterAsObserver()
@@ -23,9 +19,9 @@ namespace TDDD49_Chess.Game.Players
             throw new NotImplementedException();
         }
 
-        IReadOnlyChessEngine IChessObserver.ChessEngine
+        public bool Unregister()
         {
-            get { throw new NotImplementedException(); }
+            throw new NotImplementedException();
         }
 
         public void GameUpdated(GameUpdatedArgs args)
@@ -33,8 +29,42 @@ namespace TDDD49_Chess.Game.Players
             throw new NotImplementedException();
         }
 
+        public bool IsGameOver()
+        {
+            throw new NotImplementedException();
+        }
 
-        public bool Unregister()
+        public bool IsCurrentTurn(int color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GameObject.Board GetBoardCopy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Rules.IGameRules GetRules()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<GameObject.Move> GetMoveHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryMove(GameObject.Point from, GameObject.Point to)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool NewGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsActiveGame()
         {
             throw new NotImplementedException();
         }

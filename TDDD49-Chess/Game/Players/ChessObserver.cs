@@ -6,27 +6,55 @@ using System.Threading.Tasks;
 
 namespace TDDD49_Chess.Game.Players
 {
-    public class ChessObserver : IChessObserver
+    public abstract class ChessObserver : IChessObserver
     {
+        private IChessEngine _chessEngine;
+
+        public ChessObserver()
+        {
+            _chessEngine = new ChessEngineLocator().LocateChessEngine();
+        }
+
         public bool RegisterAsObserver()
         {
-            throw new NotImplementedException();
+            return _chessEngine.RegisterObserver(this);
         }
-
-        public IReadOnlyChessEngine ChessEngine
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public void GameUpdated(GameUpdatedArgs args)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public bool Unregister()
         {
-            throw new NotImplementedException();
+            return _chessEngine.Unregister(this);
         }
+
+        public bool IsGameOver()
+        {
+            return _chessEngine.IsGameOver();
+        }
+
+        public bool IsCurrentTurn(int color)
+        {
+            return _chessEngine.IsCurrentTurn(color);
+        }
+
+        public GameObject.Board GetBoardCopy()
+        {
+            return _chessEngine.GetBoardCopy();
+        }
+
+        public Rules.IGameRules GetRules()
+        {
+            return _chessEngine.GetRules();
+        }
+
+        public IList<GameObject.Move> GetMoveHistory()
+        {
+            return _chessEngine.GetMoveHistory();
+        }
+
+        public bool IsActiveGame()
+        {
+            return _chessEngine.IsActiveGame();
+        }
+
+        public abstract void GameUpdated(GameUpdatedArgs args);
     }
 }

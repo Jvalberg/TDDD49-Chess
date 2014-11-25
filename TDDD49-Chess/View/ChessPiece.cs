@@ -15,5 +15,11 @@ namespace TDDD49_Chess.View
         public static int KNIGHT = 3;
         public static int ROOK = 4;
         public static int PAWN = 5;
+
+        public static int ConvertFromGamePiece(int piece)
+        {
+            //Currently encoded the same way.
+            return piece;
+        }
     }
 }

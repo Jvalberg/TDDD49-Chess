@@ -26,6 +26,7 @@
                         <MultiBinding Converter="{StaticResource BackgroundConverter}">
                             <Binding Path="X" />
                             <Binding Path="Y" />
+                            <Binding Path="ValidMove" />
                         </MultiBinding>
                     </Rectangle.Fill>
                 </Rectangle>

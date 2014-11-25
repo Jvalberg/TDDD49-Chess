@@ -74,5 +74,36 @@ namespace TDDD49_Chess.Test.GameTests.RuleTests
             Assert.IsTrue(TestHelper.FoundPosition(_validMoves, new Point(7, 6)));
             Assert.IsTrue(TestHelper.FoundPosition(_validMoves, new Point(6, 6)));
         }
+
+        [TestMethod]
+        public void MovementTest_King_TestCaptureProtectedPiece()
+        {
+            Board _board = new Board();
+            //Sets a pawn in the middle of the starting position.
+            int startingX = 7;
+            int startingY = 7;
+            _board.Squares[startingX, startingY].Piece = Pieces.KING;
+            _board.Squares[startingX, startingY].Color = Color.WHITE;
+            _board.Squares[6, 6].Piece = Pieces.KNIGHT;
+            _board.Squares[6, 6].Color = Color.BLACK;
+            IMovementRule _kingMovement = new KingMovementRule();
+            /*
+             * Black can capture the pawn and escape.
+            * K 0 0 0 0 0 0 Q
+            * 0 P 0 0 0 0 0 0
+            * 0 0 0 0 0 0 0 0
+            * 0 0 0 0 0 0 0 0 
+            * 0 0 0 0 0 0 0 0
+            * 0 0 0 0 0 0 0 0
+            * Q 0 0 0 0 0 0 0
+            * 0 0 0 0 0 0 0 0
+            * */
+            var _validMoves = _kingMovement.ValidMoves(_board, new Point(startingX, startingY));
+
+            Assert.AreEqual(3, _validMoves.Count);
+            Assert.IsTrue(TestHelper.FoundPosition(_validMoves, new Point(6, 7)));
+            Assert.IsTrue(TestHelper.FoundPosition(_validMoves, new Point(7, 6)));
+            Assert.IsTrue(TestHelper.FoundPosition(_validMoves, new Point(6, 6)));
+        }
     }
 }

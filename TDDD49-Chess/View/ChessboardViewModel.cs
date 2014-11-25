@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TDDD49_Chess.Game.GameObject;
+using TDDD49_Chess.Game.Players;
 using TDDD49_Chess.View.Commands;
 
 namespace TDDD49_Chess.View
 {
-    public class ChessboardViewModel : INotifyPropertyChanged
+    public class ChessboardViewModel : ChessObserver,  INotifyPropertyChanged
     {
         private float _boardWidth;
         public float BoardWidth
@@ -72,13 +74,48 @@ namespace TDDD49_Chess.View
             SetupBoard();
             _mouseDownCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseDown);
             _mouseUpCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseUp);
+
+            //This ChessBoardViewModel is an observer of a game.
+            if(!this.RegisterAsObserver())
+            {
+                //Could not connect to chess game, handle somehow.
+            }
+            else
+            {
+                GameUpdated(null);
+            }
         }
 
         #region Commands
 
+
+        private ChessSquareViewModel selectedSquare;
+        private IList<Point> validMoves;
+        private void HandleSquareMouseUp(ChessSquareViewModel vm)
+        {
+            if(selectedSquare != null && validMoves != null)
+            {
+                foreach (var square in ChessSquares)
+                {
+                    square.ValidMove = false;
+                }
+            }
+        }
+
+        private void HandleSquareMouseDown(ChessSquareViewModel vm)
+        {
+            selectedSquare = vm;
+            var board = this.GetBoardCopy();
+            validMoves = this.GetRules().MovementRules.ValidMoves(board, new Point(vm.X, vm.Y));
+            foreach (var square in ChessSquares)
+            {
+                square.ValidMove = validMoves.Contains(new Point(square.X, square.Y));
+            }
+        }
+
+        /*
         private Boolean _isDragging;
         private ChessSquareViewModel _draggedChessSquare;
-
         private void HandleSquareMouseDown(ChessSquareViewModel vm)
         {
             _isDragging = true;
@@ -99,6 +136,27 @@ namespace TDDD49_Chess.View
                 }
             }
         }
+         * */
+
+        #endregion
+
+        #region ChessGame Methods
+
+        public override void GameUpdated(GameUpdatedArgs args)
+        {
+            //The game has updated somehow.
+            var board = this.GetBoardCopy();
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    ChessSquareViewModel vm = GetSquare(x, y);
+                    var square = board.Squares[x, y];
+                    vm.Piece = ChessPiece.ConvertFromGamePiece(square.Piece);
+                    vm.Side = ChessColor.ConvertFromGameColor(square.Color);
+                }
+            }
+        }
 
         #endregion
 
@@ -115,10 +173,10 @@ namespace TDDD49_Chess.View
                             Y = y
                         });
 
-            SetupCoreSidePieces(ChessColor.BLACK, 0);
-            SetupPawnSidePieces(ChessColor.BLACK, 1);
-            SetupPawnSidePieces(ChessColor.WHITE, 6);
-            SetupCoreSidePieces(ChessColor.WHITE, 7);
+            //SetupCoreSidePieces(ChessColor.BLACK, 0);
+            //SetupPawnSidePieces(ChessColor.BLACK, 1);
+            //SetupPawnSidePieces(ChessColor.WHITE, 6);
+            //SetupCoreSidePieces(ChessColor.WHITE, 7);
 
         }
 
@@ -179,5 +237,6 @@ namespace TDDD49_Chess.View
         }
 
         #endregion
+
     }
 }

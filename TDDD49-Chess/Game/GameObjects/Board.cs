@@ -45,6 +45,11 @@ namespace TDDD49_Chess.Game.GameObject
             return Board.GetCopy(this);
         }
 
+        public Board MakeMove(Point from, Point to)
+        {
+            return Board.MakeMove(this, from, to);
+        }
+
         #region Static Methods
 
         /// <summary>
@@ -57,7 +62,7 @@ namespace TDDD49_Chess.Game.GameObject
         /// The starting Y position of the white pawns
         /// This is always the same (White starts at the bottom)
         /// </summary>
-        public static int WHITE_START_PAWN_ROW = 7;
+        public static int WHITE_START_PAWN_ROW = 6;
 
         /// <summary>
         /// The direction for the white pieces. (They move upward)
@@ -68,6 +73,22 @@ namespace TDDD49_Chess.Game.GameObject
         /// Black pieces move downward
         /// </summary>
         public static int BLACK_DIRECTION = 1;
+
+        /// <summary>
+        /// Creates a copy of the board and
+        /// makes the specified move.
+        /// </summary>
+        /// <returns></returns>
+        public static Board MakeMove(Board board, Point from, Point to)
+        {
+            Board copy = GetCopy(board);
+            copy.Squares[to.X, to.Y] = new Square(
+                copy.Squares[from.X, from.Y].Piece,
+                copy.Squares[from.X, from.Y].Color);
+            copy.Squares[from.X, from.Y] = Square.Empty();
+            return copy;
+
+        }
 
         /// <summary>
         /// Returns all the pieces belong to the specified color.

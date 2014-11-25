@@ -37,9 +37,45 @@ namespace TDDD49_Chess.Test.MockObjects
             throw new NotImplementedException();
         }
 
-        IPlayerChessEngine IChessPlayer.ChessEngine
+
+        public bool IsGameOver()
         {
-            get { throw new NotImplementedException(); }
+            throw new NotImplementedException();
+        }
+
+        public bool IsCurrentTurn(int color)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Game.GameObject.Board GetBoardCopy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Game.Rules.IGameRules GetRules()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Game.GameObject.Move> GetMoveHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryMove(Game.GameObject.Point from, Game.GameObject.Point to)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool NewGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsActiveGame()
+        {
+            throw new NotImplementedException();
         }
     }
 }
