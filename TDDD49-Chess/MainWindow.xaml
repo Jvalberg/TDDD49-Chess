@@ -4,6 +4,9 @@
         xmlns:view="clr-namespace:TDDD49_Chess.View"
         Title="Chess" Height="900" Width="1400"
         x:Name="mainWindow">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Source={StaticResource ViewModelLocator}, Path=PlayerViewModel.NewGameCommand}" Key="N" Modifiers="Control" />
+    </Window.InputBindings>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/View/Resources/background.jpg" Stretch="None" />
