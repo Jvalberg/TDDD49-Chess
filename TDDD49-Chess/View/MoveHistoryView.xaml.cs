@@ -8,26 +8,21 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using TDDD49_Chess.Game;
-using TDDD49_Chess.Game.GameObject;
-using TDDD49_Chess.Game.Players;
-using TDDD49_Chess.View;
+using System.Windows.Shapes;
 
-namespace TDDD49_Chess
+namespace TDDD49_Chess.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MoveHistoryView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MoveHistoryView : UserControl
     {
-        public MainWindow()
+        public MoveHistoryView()
         {
             InitializeComponent();
-
-            //This is where the view is hooked up with the game.
-            //Adds the human player
         }
     }
 }

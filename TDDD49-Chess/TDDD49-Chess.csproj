@@ -108,6 +108,10 @@
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MenuViewModel.cs" />
+    <Compile Include="View\MoveHistoryView.xaml.cs">
+      <DependentUpon>MoveHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MoveHistoryViewModel.cs" />
     <Compile Include="View\PlayerViewModel.cs" />
     <Compile Include="View\Utilities\MouseEventToCommand.cs" />
     <Compile Include="View\Commands\RelayCommand.cs" />
@@ -137,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MoveHistoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

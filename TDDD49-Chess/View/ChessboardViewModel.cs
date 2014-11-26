@@ -107,6 +107,7 @@ namespace TDDD49_Chess.View
             selectedSquare = vm;
             var board = this.GetBoardCopy();
             validMoves = this.GetRules().MovementRules.ValidMoves(board, new Point(vm.X, vm.Y));
+            validMoves = this.GetRules().FilterCheckMoves(this.GetBoardCopy(), new Point(vm.X, vm.Y), validMoves);
             foreach (var square in ChessSquares)
             {
                 square.ValidMove = validMoves.Contains(new Point(square.X, square.Y));

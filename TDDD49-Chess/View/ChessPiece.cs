@@ -21,5 +21,19 @@ namespace TDDD49_Chess.View
             //Currently encoded the same way.
             return piece;
         }
+
+        public static String ConvertToString(int piece)
+        {
+            switch(piece)
+            {
+                case 0: return "K"; 
+                case 1: return "Q"; 
+                case 2: return "B"; 
+                case 3: return "Kn"; 
+                case 4: return "R"; 
+                case 5: return "P";
+                default : return "<none>"; 
+            }
+        }
     }
 }

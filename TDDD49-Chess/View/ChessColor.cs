@@ -17,5 +17,20 @@ namespace TDDD49_Chess.View
             //Currently encoded the same way.
             return color;
         }
+
+        public static int ConvertToGameColor(int color)
+        {
+            return color;
+        }
+
+        public static String ConvertToString(int color)
+        {
+            switch(color)
+            {
+                case 0: return "White";
+                case 1: return "Black";
+                default: return "None";
+            }
+        }
     }
 }

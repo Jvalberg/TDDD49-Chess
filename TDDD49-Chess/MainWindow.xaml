@@ -12,10 +12,14 @@
             <RowDefinition Height="22"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <view:MenuView Grid.Row="0"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="250" />
+        </Grid.ColumnDefinitions>
+        <view:MenuView Grid.Row="0" Grid.ColumnSpan="2"
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Stretch"/>
-        <ScrollViewer Grid.Row="1"
+        <ScrollViewer Grid.Row="1" Grid.Column="0"
             VerticalScrollBarVisibility="Auto" 
             HorizontalScrollBarVisibility="Auto">
             <Border BorderThickness="30"
@@ -25,5 +29,10 @@
                 <view:ChessBoardView />
             </Border>
         </ScrollViewer>
+        <DockPanel Grid.Row="2" Grid.Column="2">
+            <view:GameStatusView DockPanel.Dock="Top" />
+            <view:MoveHistoryView VerticalAlignment="Stretch" />
+        </DockPanel>
+        <GridSplitter Grid.Column="0" Grid.Row="2"  HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="4" Background="Black"/>
     </Grid>
 </Window>

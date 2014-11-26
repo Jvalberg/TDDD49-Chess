@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TDDD49_Chess.Game.GameObject;
 using TDDD49_Chess.Game.Players;
 using TDDD49_Chess.View.Commands;
 
@@ -11,12 +12,16 @@ namespace TDDD49_Chess.View
 {
     public class PlayerViewModel : HumanChessPlayer
     {
-        public static int Color { get; set; }
+        public int Color { get; set; }
 
         public PlayerViewModel()
         {
-            _mouseDownCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseDown);
-            _mouseUpCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseUp);
+
+            //Only triggers command when it's ones turn
+            _mouseDownCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseDown, 
+                (ChessSquareViewModel vm) => ( this.IsCurrentTurn(ChessColor.ConvertToGameColor(Color))));
+            _mouseUpCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseUp, 
+                (ChessSquareViewModel vm) => (this.IsCurrentTurn(ChessColor.ConvertToGameColor(Color))));
         }
 
         #region Commands
@@ -27,14 +32,30 @@ namespace TDDD49_Chess.View
         private ICommand _mouseUpCommand;
         public ICommand MouseUpCommand { get { return _mouseUpCommand; } }
 
-        private void HandleSquareMouseUp(ChessSquareViewModel vm)
-        {
-            Console.WriteLine("PlayerViewModel MouseUP");
-        }
 
+        private ChessSquareViewModel _draggedSquare = null;
         private void HandleSquareMouseDown(ChessSquareViewModel vm)
         {
+            _draggedSquare = vm;
         }
+
+        private void HandleSquareMouseUp(ChessSquareViewModel vm)
+        {
+            if(_draggedSquare != null)
+            {
+                //A move has been tried.
+
+                if(_draggedSquare.Side == Color &&
+                    _draggedSquare.Piece != ChessPiece.NONE) //Dragged correct piece.
+                {
+                    this.TryMove(new Point(_draggedSquare.X, _draggedSquare.Y),
+                                 new Point(vm.X, vm.Y));
+                }
+
+                _draggedSquare = null;
+            }
+        }
+
 
         #endregion
 

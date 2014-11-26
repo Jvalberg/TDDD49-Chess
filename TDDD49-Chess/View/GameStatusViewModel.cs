@@ -51,6 +51,7 @@ namespace TDDD49_Chess.View
             if(!this.RegisterAsObserver())
             {
                 //Handle error some way.
+                setEmptyStatus();
             }
             else
             {

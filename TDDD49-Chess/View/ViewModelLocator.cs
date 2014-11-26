@@ -36,7 +36,11 @@ namespace TDDD49_Chess.View
             get
             {
                 if (_playerViewModel == null)
+                {
                     _playerViewModel = new PlayerViewModel();
+                    _playerViewModel.Color = ChessColor.WHITE;
+                    _playerViewModel.RegisterAsPlayer(_playerViewModel.Color);
+                }
                 return _playerViewModel;
             }
         }
@@ -47,8 +51,34 @@ namespace TDDD49_Chess.View
             get
             {
                 if (_secondPlayerViewModel == null)
+                {
                     _secondPlayerViewModel = new PlayerViewModel();
-                return _playerViewModel;
+                    _secondPlayerViewModel.Color = ChessColor.BLACK;
+                    _secondPlayerViewModel.RegisterAsPlayer(_secondPlayerViewModel.Color);
+                }
+                return _secondPlayerViewModel;
+            }
+        }
+
+        private GameStatusViewModel _gameStatusViewModel;
+        public GameStatusViewModel GameStatusViewModel
+        {
+            get
+            {
+                if (_gameStatusViewModel == null)
+                    _gameStatusViewModel = new GameStatusViewModel();
+                return _gameStatusViewModel;
+            }
+        }
+
+        private MoveHistoryViewModel _moveHistoryViewModel;
+        public MoveHistoryViewModel MoveHistoryViewModel
+        {
+            get
+            {
+                if (_moveHistoryViewModel == null)
+                    _moveHistoryViewModel = new MoveHistoryViewModel();
+                return _moveHistoryViewModel;
             }
         }
     }

@@ -34,6 +34,7 @@ namespace TDDD49_Chess.Game
         {
             _observers = new List<IChessObserver>();
             _players = new Dictionary<IChessPlayer, int>();
+            _moveHistory = new List<Move>();
             _gameRules = new GameRules();
             resetBoard();
         }
@@ -130,6 +131,8 @@ namespace TDDD49_Chess.Game
 
             addClothedRow(_board, 0, Color.BLACK);
             addClothedRow(_board, 7, Color.WHITE);
+            
+            _moveHistory.Clear();
         }
 
         private void addClothedRow(Board board, int rowId, int color)
