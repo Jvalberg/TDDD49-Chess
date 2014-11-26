@@ -86,6 +86,5 @@ namespace TDDD49_Chess.View.Utilities
         {
             return (ChessSquareViewModel)d.GetValue(ChessSquareViewModelProperty);
         }
-
     }
 }

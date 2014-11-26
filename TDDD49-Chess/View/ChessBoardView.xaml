@@ -9,7 +9,7 @@
              d:DesignHeight="300" d:DesignWidth="300" 
              Width="{Binding BoardWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
              Height="{Binding BoardHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-             DataContext="{StaticResource ChessboardViewModel}">
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=ChessBoardViewModel}">
     <Grid Background="Black" >
         <ItemsControl ItemsSource="{Binding ChessSquares}">
             <!-- The control to draw the squares on -->

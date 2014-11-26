@@ -100,6 +100,10 @@
     <Compile Include="View\Converters\IndexToBackgroundConverter.cs" />
     <Compile Include="View\Converters\IndexToPositionConverter.cs" />
     <Compile Include="View\Converters\PieceDescToImageConverter.cs" />
+    <Compile Include="View\GameStatusView.xaml.cs">
+      <DependentUpon>GameStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GameStatusViewModel.cs" />
     <Compile Include="View\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
     </Compile>
@@ -107,6 +111,7 @@
     <Compile Include="View\PlayerViewModel.cs" />
     <Compile Include="View\Utilities\MouseEventToCommand.cs" />
     <Compile Include="View\Commands\RelayCommand.cs" />
+    <Compile Include="View\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChessSquare.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GameStatusView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

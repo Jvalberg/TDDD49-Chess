@@ -11,6 +11,8 @@ namespace TDDD49_Chess.View
 {
     public class PlayerViewModel : HumanChessPlayer
     {
+        public static int Color { get; set; }
+
         public PlayerViewModel()
         {
             _mouseDownCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseDown);
@@ -27,6 +29,7 @@ namespace TDDD49_Chess.View
 
         private void HandleSquareMouseUp(ChessSquareViewModel vm)
         {
+            Console.WriteLine("PlayerViewModel MouseUP");
         }
 
         private void HandleSquareMouseDown(ChessSquareViewModel vm)

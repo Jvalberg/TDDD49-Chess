@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid
-        util:MouseEventToCommand.MouseUpCommand="{Binding MouseUpCommand, Source={StaticResource ChessboardViewModel}}"
+        util:MouseEventToCommand.MouseUpCommand="{Binding Path=ChessBoardViewModel.MouseUpCommand, Source={StaticResource ViewModelLocator}}"
         util:MouseEventToCommand.ChessSquareViewModel="{Binding}">
         <Border BorderBrush="Black">
             <Border.Style>
@@ -31,7 +31,7 @@
                     </Rectangle.Fill>
                 </Rectangle>
                 <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                       util:MouseEventToCommand.MouseDownCommand="{Binding MouseDownCommand, Source={StaticResource ChessboardViewModel}}"
+                       util:MouseEventToCommand.MouseDownCommand="{Binding Path=ChessBoardViewModel.MouseDownCommand, Source={StaticResource ViewModelLocator}}"
                        util:MouseEventToCommand.ChessSquareViewModel="{Binding}">
                     <Image.Source>
                         <MultiBinding Converter="{StaticResource PieceDescriptionToImageConverter}">
