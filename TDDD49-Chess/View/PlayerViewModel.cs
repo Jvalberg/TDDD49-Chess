@@ -22,6 +22,7 @@ namespace TDDD49_Chess.View
                 (ChessSquareViewModel vm) => ( this.IsCurrentTurn(ChessColor.ConvertToGameColor(Color))));
             _mouseUpCommand = new RelayCommand<ChessSquareViewModel>(HandleSquareMouseUp, 
                 (ChessSquareViewModel vm) => (this.IsCurrentTurn(ChessColor.ConvertToGameColor(Color))));
+            _newGameCommand = new RelayCommand<Object>(HandleNewGameRequest);
         }
 
         #region Commands
@@ -32,6 +33,8 @@ namespace TDDD49_Chess.View
         private ICommand _mouseUpCommand;
         public ICommand MouseUpCommand { get { return _mouseUpCommand; } }
 
+        private ICommand _newGameCommand;
+        public ICommand NewGameCommand { get { return _newGameCommand; } }
 
         private ChessSquareViewModel _draggedSquare = null;
         private void HandleSquareMouseDown(ChessSquareViewModel vm)
@@ -56,6 +59,11 @@ namespace TDDD49_Chess.View
             }
         }
 
+
+        private void HandleNewGameRequest(object obj)
+        {
+            this.NewGame();
+        }
 
         #endregion
 

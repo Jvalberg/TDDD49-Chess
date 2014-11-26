@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using TDDD49_Chess.Game.GameObject;
 using TDDD49_Chess.Game.Players;
 
@@ -94,9 +95,23 @@ namespace TDDD49_Chess.View
             }
         }
 
+        private ICollectionView _sortedMoves;
+        public ICollectionView SortedMoves
+        {
+            get { return _sortedMoves; }
+            set
+            {
+                SortedMoves = value;
+                OnPropertyChanged("SortedMoves");
+            }
+        }
+
         public MoveHistoryViewModel()
         {
-
+            this.RegisterAsObserver();
+            _moves = new ObservableCollection<MoveViewModel>();
+            _sortedMoves = CollectionViewSource.GetDefaultView(_moves);
+            _sortedMoves.SortDescriptions.Add(new SortDescription("MoveNumber", ListSortDirection.Descending));
         }
 
         public override void GameUpdated(GameUpdatedArgs args)
@@ -117,6 +132,7 @@ namespace TDDD49_Chess.View
                 Moves.Add(moveVM);
                 counter++;
             }
+
         }
 
         #region Property Changed

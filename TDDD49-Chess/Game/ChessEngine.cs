@@ -76,6 +76,7 @@ namespace TDDD49_Chess.Game
             return _isActiveGame;
         }
 
+        //TODO: Calculate this once per turn, could lead to performance issues otherwise.
         public bool IsGameOver()
         {
             var oppositionColor = _turn_color == Color.BLACK ? Color.WHITE : Color.BLACK;

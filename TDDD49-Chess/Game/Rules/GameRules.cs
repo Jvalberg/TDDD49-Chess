@@ -47,7 +47,7 @@ namespace TDDD49_Chess.Game.Rules
             foreach (var move in moves)
             {
                 var boardCopy = board.MakeMove(point, move);
-                if(IsGameState(board, GameStateRule.CHECK, piece.Color))
+                if (IsGameState(boardCopy, GameStateRule.CHECK, piece.Color))
                 {
                     toBeRemovedPoints.Add(move);
                 }
