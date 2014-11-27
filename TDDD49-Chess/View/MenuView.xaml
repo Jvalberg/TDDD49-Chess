@@ -9,7 +9,7 @@
     <Grid>
         <Menu HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsMainMenu="True">
             <MenuItem Header="_Game">
-                <MenuItem Header="_New Game..." Command="{Binding Source={StaticResource ViewModelLocator}, Path=PlayerViewModel.NewGameCommand}"></MenuItem>
+                <MenuItem Header="_New Game..." Command="{Binding Source={StaticResource ViewModelLocator}, Path=OpponentViewModel.ShowNewGameDialogCommand}"></MenuItem>
                 <!--<MenuItem Header="_Settings..."></MenuItem>-->
                 <MenuItem Header="_Exit" Click="MenuItem_Click"></MenuItem>
             </MenuItem>

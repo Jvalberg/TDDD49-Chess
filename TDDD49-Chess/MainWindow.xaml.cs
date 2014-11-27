@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using TDDD49_Chess.AI;
 using TDDD49_Chess.Game;
 using TDDD49_Chess.Game.GameObject;
 using TDDD49_Chess.Game.Players;
@@ -24,14 +25,12 @@ namespace TDDD49_Chess
     public partial class MainWindow : Window
     {
 
-        private Persistor GLOBAL_PERSISTOR;
         public MainWindow()
         {
             InitializeComponent();
 
             //This is where the view is hooked up with the game.
             //Adds the human player
-            GLOBAL_PERSISTOR = new Persistor();
         }
     }
 }

@@ -8,29 +8,28 @@ using TDDD49_Chess.Game.Players;
 
 namespace TDDD49_Chess.View.Persistor
 {
-    public class Persistor : ChessObserver
+    public class Persistance : ChessObserver
     {
-        private IDataPersistor _chessPersister;
+        public IDataPersistor ChessPersistor { get; set; }
         private String storage_path = "CHESS.xml";
 
-        public Persistor()
+        public Persistance()
         {
-            _chessPersister = new DataPersistor();
-            _chessPersister.AttachPersistor(storage_path);
-            _chessPersister.AutoSyncWithStorage();
+            ChessPersistor = new DataPersistor();
+            ChessPersistor.AttachPersistor(storage_path);
+            ChessPersistor.AutoSyncWithStorage();
             this.RegisterAsObserver();
-            _chessPersister.Load();
         }
 
         public override void GameUpdated(GameUpdatedArgs args)
         {
             if(args.Trigger == GameUpdatedTrigger.NewGame)
             {
-                _chessPersister.Clear();
+                ChessPersistor.Clear();
             }
             else if(args.Trigger == GameUpdatedTrigger.MovedPiece)
             {
-                _chessPersister.AddState();
+                ChessPersistor.AddState();
             }
 
         }

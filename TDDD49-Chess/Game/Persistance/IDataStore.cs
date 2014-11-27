@@ -12,6 +12,9 @@ namespace TDDD49_Chess.Game.Persistance
         void AddState(IChessEngine chessEngine);
         void Load(IChessEngine chessEngine);
 
+        void AddMetadata(String identifier, String value);
+        String GetMetadata(String identifier);
+
         /// <summary>
         /// Ensures that the datastore exists (and is intact).
         /// </summary>

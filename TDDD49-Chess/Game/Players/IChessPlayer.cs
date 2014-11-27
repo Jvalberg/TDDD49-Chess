@@ -16,6 +16,7 @@ namespace TDDD49_Chess.Game.Players
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
+        Boolean IsActivePlayer();
         Boolean RegisterAsPlayer(int color);
         Boolean TryMove(Point from, Point to);
         Boolean NewGame();

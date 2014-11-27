@@ -85,6 +85,12 @@ namespace TDDD49_Chess.View
                 }
                 CurrentTurn = "None";
             }
+            else if(!this.IsActiveGame())
+            {
+                GameIsOver = "<unkown>";
+                GameState = "Register more players to start.";
+                CurrentTurn = "<unkown>";
+            }
             else
             {
                 GameIsOver = "The game is on";
@@ -109,7 +115,12 @@ namespace TDDD49_Chess.View
 
         public override void GameUpdated(GameUpdatedArgs args)
         {
-            fetchChessStatus();
+            if(args.Trigger == GameUpdatedTrigger.NewGame ||
+                args.Trigger == GameUpdatedTrigger.MovedPiece || 
+                args.Trigger == GameUpdatedTrigger.BoardLoaded)
+            {
+                fetchChessStatus();
+            }
         }
 
         #region Property Changed

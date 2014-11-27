@@ -20,7 +20,6 @@ namespace TDDD49_Chess.Game
         /// </summary>
         private int _turn_color;
         private Board _board;
-        private Boolean _isActiveGame;
 
         private IGameRules _gameRules;
         private IList<Move> _moveHistory;
@@ -41,6 +40,9 @@ namespace TDDD49_Chess.Game
 
         public bool TryMove(IChessPlayer player, Point from, Point to)
         {
+            if (!IsActiveGame())
+                return false;
+
             if(!_players.ContainsKey(player))
                 throw new Exception("Cannot make a move as an unregistered player. Register!");
             
@@ -73,7 +75,13 @@ namespace TDDD49_Chess.Game
 
         public bool IsActiveGame()
         {
-            return _isActiveGame;
+            if(_players.Count == 2)
+            {
+                if (_players.ContainsValue(Color.BLACK) && 
+                    _players.ContainsValue(Color.WHITE))
+                    return true;
+            }
+            return false;
         }
 
         //TODO: Calculate this once per turn, could lead to performance issues otherwise.
@@ -111,7 +119,6 @@ namespace TDDD49_Chess.Game
                 throw new Exception("Cannot start game unless both white and black have players.");
 
             _turn_color = Color.WHITE;
-            _isActiveGame = true;
             _moveHistory = new List<Move>();
 
             resetBoard();
@@ -160,6 +167,7 @@ namespace TDDD49_Chess.Game
                 return false;
 
             _players.Add(player, color);
+            ChessGameChanged(new GameUpdatedArgs(GameUpdatedTrigger.PlayerAdded));
             return true;
         }
 
@@ -177,6 +185,7 @@ namespace TDDD49_Chess.Game
             if(entity is IChessPlayer)
             {
                 _players.Remove(entity as IChessPlayer);
+                ChessGameChanged(new GameUpdatedArgs(GameUpdatedTrigger.PlayerRemove));
             }
             return true;
         }
@@ -209,8 +218,15 @@ namespace TDDD49_Chess.Game
             {
                 _turn_color = Color.BLACK;
             }
-            ChessGameChanged(new GameUpdatedArgs(GameUpdatedTrigger.BoardUpdate));
+            ChessGameChanged(new GameUpdatedArgs(GameUpdatedTrigger.BoardLoaded));
             return true;
+        }
+
+        public bool IsActivePlayer(IChessPlayer player)
+        {
+            if(player != null)
+                return _players.ContainsKey(player);
+            return false;
         }
     }
 }

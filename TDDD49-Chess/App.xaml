@@ -8,8 +8,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <view:ViewModelLocator x:Key="ViewModelLocator" x:Name="ViewModelLocator" />
-        <view:ChessboardViewModel x:Key="ChessboardViewModel" x:Name="ChessboardViewModel"  />
-        <view:MenuViewModel x:Key="MenuViewModel" x:Name="MenuViewModel" />
         <converters:IndexToPositionConverter x:Key="PositionConverter" x:Name="PositionConverter" />
         
         

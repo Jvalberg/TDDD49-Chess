@@ -77,5 +77,10 @@ namespace TDDD49_Chess.Test.MockObjects
         {
             throw new NotImplementedException();
         }
+
+        public bool IsActivePlayer()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

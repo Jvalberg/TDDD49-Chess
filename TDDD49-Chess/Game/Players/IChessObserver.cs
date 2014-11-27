@@ -12,7 +12,9 @@ namespace TDDD49_Chess.Game.Players
     {
         None,
         MovedPiece,
-        BoardUpdate,
+        BoardLoaded,
+        PlayerAdded,
+        PlayerRemove,
         NewGame
     };
 

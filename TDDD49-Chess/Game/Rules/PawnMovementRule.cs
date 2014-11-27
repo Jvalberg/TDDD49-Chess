@@ -37,10 +37,14 @@ namespace TDDD49_Chess.Game.Rules
                 //The standard one step move for a pawn.
                 //Only valid if it's inside the board bounds and
                 //No piece is standing there
-                if (Pieces.IsNotPiece(board.Squares[coordinates.X, coordinates.Y + direction].Piece))
+                if (coordinates.Y > 0 && coordinates.Y < 7)
                 {
-                    validMoves.Add(new Point(coordinates.X, coordinates.Y + direction));
+                    if (Pieces.IsNotPiece(board.Squares[coordinates.X, coordinates.Y + direction].Piece))
+                    {
+                        validMoves.Add(new Point(coordinates.X, coordinates.Y + direction));
+                    }
                 }
+                
 
                 //Capturing with a pawn.
                 Point possible = new Point(coordinates.X + 1, coordinates.Y + direction);

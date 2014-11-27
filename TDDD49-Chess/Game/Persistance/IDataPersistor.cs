@@ -13,6 +13,8 @@ namespace TDDD49_Chess.Game.Persistance
         void Load();
         void Clear();
         void AutoSyncWithStorage();
+        void SaveMetadata(String identifier, String value);
+        String GetMetadataValue(String identifier);
         /// <summary>
         /// Uses the ChessEngine locator to fetch the current 
         /// ChessEngine

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TDDD49_Chess.Game.Players
 {
-    public class HumanChessPlayer : IChessPlayer
+    public abstract class ChessPlayer : IChessPlayer
     {
         private IChessEngine _chessEngine;
 
-        public HumanChessPlayer()
+        public ChessPlayer()
         {
             _chessEngine = new ChessEngineLocator().LocateChessEngine();
         }
@@ -73,5 +73,11 @@ namespace TDDD49_Chess.Game.Players
         {
             return _chessEngine.IsActiveGame();
         }
+
+        public bool IsActivePlayer()
+        {
+            return _chessEngine.IsActivePlayer(this);
+        }
+
     }
 }

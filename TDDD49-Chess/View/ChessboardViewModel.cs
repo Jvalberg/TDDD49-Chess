@@ -82,7 +82,8 @@ namespace TDDD49_Chess.View
             }
             else
             {
-                GameUpdated(null);
+                //GameUpdated(new GameUpdatedArgs);
+                GameUpdated(new GameUpdatedArgs(GameUpdatedTrigger.BoardLoaded));
             }
         }
 
@@ -112,7 +113,8 @@ namespace TDDD49_Chess.View
             {
                 square.ValidMove = validMoves.Contains(new Point(square.X, square.Y)) &&
                                     !this.IsGameOver() &&
-                                    this.IsCurrentTurn(ChessColor.ConvertToGameColor(vm.Side));
+                                    this.IsCurrentTurn(ChessColor.ConvertToGameColor(vm.Side)) &&
+                                    this.IsActiveGame();
             }
         }
 
@@ -147,16 +149,21 @@ namespace TDDD49_Chess.View
 
         public override void GameUpdated(GameUpdatedArgs args)
         {
-            //The game has updated somehow.
-            var board = this.GetBoardCopy();
-            for (int x = 0; x < 8; x++)
+            if (args.Trigger == GameUpdatedTrigger.BoardLoaded ||
+                args.Trigger == GameUpdatedTrigger.MovedPiece ||
+                args.Trigger == GameUpdatedTrigger.NewGame)
             {
-                for (int y = 0; y < 8; y++)
+                //The game has updated somehow.
+                var board = this.GetBoardCopy();
+                for (int x = 0; x < 8; x++)
                 {
-                    ChessSquareViewModel vm = GetSquare(x, y);
-                    var square = board.Squares[x, y];
-                    vm.Piece = ChessPiece.ConvertFromGamePiece(square.Piece);
-                    vm.Side = ChessColor.ConvertFromGameColor(square.Color);
+                    for (int y = 0; y < 8; y++)
+                    {
+                        ChessSquareViewModel vm = GetSquare(x, y);
+                        var square = board.Squares[x, y];
+                        vm.Piece = ChessPiece.ConvertFromGamePiece(square.Piece);
+                        vm.Side = ChessColor.ConvertFromGameColor(square.Color);
+                    }
                 }
             }
         }

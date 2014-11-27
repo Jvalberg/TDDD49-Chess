@@ -115,5 +115,44 @@ namespace TDDD49_Chess.Game.Persistance
             xml_storage.Add(new XElement(ROOT_NAME));
             xml_storage.Save(_xml_path);
         }
+
+        public void AddMetadata(string identifier, string value)
+        {
+            if(File.Exists(_xml_path))
+            {
+                try
+                {
+                    var xml_storage = XDocument.Load(_xml_path);
+                    if (xml_storage.Element(ROOT_NAME) == null)
+                        xml_storage.Add(new XElement(ROOT_NAME));
+                    if(xml_storage.Element("Metadata") == null)
+                        xml_storage.Element(ROOT_NAME).Add(new XElement("Metadata"));
+                    xml_storage.Element(ROOT_NAME).Element("Metadata").Add(
+                        new XElement(identifier, value));
+                    xml_storage.Save(_xml_path);
+                }
+                catch(Exception e)
+                {
+
+                }
+            }
+        }
+
+        public string GetMetadata(string identifier)
+        {
+            if(File.Exists(_xml_path))
+            {
+                try
+                {
+                    var xml_storage = XDocument.Load(_xml_path);
+                    return xml_storage.Element(ROOT_NAME).Element("Metadata").Element(identifier).Value;
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            return null;
+        }
     }
 }

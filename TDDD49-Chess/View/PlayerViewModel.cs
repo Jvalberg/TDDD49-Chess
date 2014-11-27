@@ -10,7 +10,7 @@ using TDDD49_Chess.View.Commands;
 
 namespace TDDD49_Chess.View
 {
-    public class PlayerViewModel : HumanChessPlayer
+    public class PlayerViewModel : ChessPlayer
     {
         public int Color { get; set; }
 
@@ -39,12 +39,15 @@ namespace TDDD49_Chess.View
         private ChessSquareViewModel _draggedSquare = null;
         private void HandleSquareMouseDown(ChessSquareViewModel vm)
         {
-            _draggedSquare = vm;
+            if(this.IsActivePlayer())
+            {
+                _draggedSquare = vm;
+            }
         }
 
         private void HandleSquareMouseUp(ChessSquareViewModel vm)
         {
-            if(_draggedSquare != null)
+            if(_draggedSquare != null && this.IsActivePlayer())
             {
                 //A move has been tried.
 
@@ -66,6 +69,5 @@ namespace TDDD49_Chess.View
         }
 
         #endregion
-
     }
 }

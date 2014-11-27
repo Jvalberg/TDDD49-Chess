@@ -116,21 +116,26 @@ namespace TDDD49_Chess.View
 
         public override void GameUpdated(GameUpdatedArgs args)
         {
-            Moves.Clear();
-            var moveHistory = this.GetMoveHistory();
-            int counter = 1;
-            foreach (var move in moveHistory)
+            if(args.Trigger == GameUpdatedTrigger.BoardLoaded || 
+                args.Trigger == GameUpdatedTrigger.MovedPiece ||
+                args.Trigger == GameUpdatedTrigger.NewGame)
             {
-                MoveViewModel moveVM = new MoveViewModel();
-                moveVM.MoveNumber = counter;
-                moveVM.From = "(" + move.From.X + ", " + move.From.Y + ")";
-                moveVM.To = "(" + move.To.X + ", " + move.To.Y + ")";
-                moveVM.MovedPieceDetails = ChessColor.ConvertToString(ChessColor.ConvertFromGameColor(move.MovedPiece.Color)) +
-                    ":" + ChessPiece.ConvertToString(ChessPiece.ConvertFromGamePiece(move.MovedPiece.Piece));
-                moveVM.CaughtPieceDetails = ChessColor.ConvertToString(ChessColor.ConvertFromGameColor(move.CapturedPiece.Color)) +
-                    ":" + ChessPiece.ConvertToString(ChessPiece.ConvertFromGamePiece(move.CapturedPiece.Piece));
-                Moves.Add(moveVM);
-                counter++;
+                Moves.Clear();
+                var moveHistory = this.GetMoveHistory();
+                int counter = 1;
+                foreach (var move in moveHistory)
+                {
+                    MoveViewModel moveVM = new MoveViewModel();
+                    moveVM.MoveNumber = counter;
+                    moveVM.From = "(" + move.From.X + ", " + move.From.Y + ")";
+                    moveVM.To = "(" + move.To.X + ", " + move.To.Y + ")";
+                    moveVM.MovedPieceDetails = ChessColor.ConvertToString(ChessColor.ConvertFromGameColor(move.MovedPiece.Color)) +
+                        ":" + ChessPiece.ConvertToString(ChessPiece.ConvertFromGamePiece(move.MovedPiece.Piece));
+                    moveVM.CaughtPieceDetails = ChessColor.ConvertToString(ChessColor.ConvertFromGameColor(move.CapturedPiece.Color)) +
+                        ":" + ChessPiece.ConvertToString(ChessPiece.ConvertFromGamePiece(move.CapturedPiece.Piece));
+                    Moves.Add(moveVM);
+                    counter++;
+                }
             }
 
         }

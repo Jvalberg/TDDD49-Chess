@@ -140,5 +140,16 @@ namespace TDDD49_Chess.Game.Persistance
             _performedRecentDataStorageChange = false;
         }
 
+
+
+        public void SaveMetadata(string identifier, string value)
+        {
+            _dataStore.AddMetadata(identifier, value);
+        }
+
+        public string GetMetadataValue(string identifier)
+        {
+            return _dataStore.GetMetadata(identifier);
+        }
     }
 }

@@ -58,6 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AI\AIChessPlayer.cs" />
+    <Compile Include="AI\IAIChessPlayer.cs" />
     <Compile Include="Game\ChessEngine.cs" />
     <Compile Include="Game\ChessEngineLocator.cs" />
     <Compile Include="Game\GameObjects\Board.cs" />
@@ -71,9 +73,8 @@
     <Compile Include="Game\Persistance\IDataStore.cs" />
     <Compile Include="Game\Persistance\IDataPersistor.cs" />
     <Compile Include="Game\Persistance\DataPersistor.cs" />
-    <Compile Include="Game\Players\AIChessPlayer.cs" />
     <Compile Include="Game\Players\ChessObserver.cs" />
-    <Compile Include="Game\Players\HumanChessPlayer.cs" />
+    <Compile Include="Game\Players\ChessPlayer.cs" />
     <Compile Include="Game\Players\IChessObserver.cs" />
     <Compile Include="Game\Players\IChessPlayer.cs" />
     <Compile Include="Game\Rules\BishopMovementRule.cs" />
@@ -94,6 +95,9 @@
     <Compile Include="Game\Rules\RookMovementRule.cs" />
     <Compile Include="Game\GameObjects\Square.cs" />
     <Compile Include="Game\Rules\StalemateGameStateRule.cs" />
+    <Compile Include="OpponentView.xaml.cs">
+      <DependentUpon>OpponentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ChessColor.cs" />
     <Compile Include="View\ChessPiece.cs" />
     <Compile Include="View\ChessboardView.xaml.cs">
@@ -119,7 +123,8 @@
       <DependentUpon>MoveHistoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MoveHistoryViewModel.cs" />
-    <Compile Include="View\Persistor\Persistor.cs" />
+    <Compile Include="View\GameManagerViewModel.cs" />
+    <Compile Include="View\Persistor\Persistance.cs" />
     <Compile Include="View\PlayerViewModel.cs" />
     <Compile Include="View\Utilities\MouseEventToCommand.cs" />
     <Compile Include="View\Commands\RelayCommand.cs" />
@@ -136,6 +141,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OpponentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChessboardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

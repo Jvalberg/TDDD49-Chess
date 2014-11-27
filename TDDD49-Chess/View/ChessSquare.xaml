@@ -8,8 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid
         util:MouseEventToCommand.MouseUpCommand="{Binding Path=ChessBoardViewModel.MouseUpCommand, Source={StaticResource ViewModelLocator}}"
-        util:MouseEventToCommand.PlayerMouseUpCommand="{Binding Source={StaticResource ViewModelLocator}, Path=PlayerViewModel.MouseUpCommand}"
-        util:MouseEventToCommand.SecondPlayerMouseUpCommand="{Binding Source={StaticResource ViewModelLocator}, Path=SecondPlayerViewModel.MouseUpCommand}"
+        util:MouseEventToCommand.PlayerMouseUpCommand="{Binding Source={StaticResource ViewModelLocator}, Path=GameManagerViewModel.MouseUpCommand}"
         util:MouseEventToCommand.ChessSquareViewModel="{Binding}">
         <Border BorderBrush="Black">
             <Border.Style>
@@ -34,8 +33,7 @@
                 </Rectangle>
                 <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                        util:MouseEventToCommand.MouseDownCommand="{Binding Path=ChessBoardViewModel.MouseDownCommand, Source={StaticResource ViewModelLocator}}"
-                       util:MouseEventToCommand.PlayerMouseDownCommand="{Binding Source={StaticResource ViewModelLocator}, Path=PlayerViewModel.MouseDownCommand}"
-                       util:MouseEventToCommand.SecondPlayerMouseDownCommand="{Binding Source={StaticResource ViewModelLocator}, Path=SecondPlayerViewModel.MouseDownCommand}"
+                       util:MouseEventToCommand.PlayerMouseDownCommand="{Binding Source={StaticResource ViewModelLocator}, Path=GameManagerViewModel.MouseDownCommand}"
                        util:MouseEventToCommand.ChessSquareViewModel="{Binding}">
                     <Image.Source>
                         <MultiBinding Converter="{StaticResource PieceDescriptionToImageConverter}">

@@ -29,7 +29,7 @@ namespace TDDD49_Chess.View
                 return _menuViewModel;
             }
         }
-
+        /*
         private PlayerViewModel _playerViewModel;
         public PlayerViewModel PlayerViewModel
         {
@@ -54,11 +54,12 @@ namespace TDDD49_Chess.View
                 {
                     _secondPlayerViewModel = new PlayerViewModel();
                     _secondPlayerViewModel.Color = ChessColor.BLACK;
-                    _secondPlayerViewModel.RegisterAsPlayer(_secondPlayerViewModel.Color);
+                    //_secondPlayerViewModel.RegisterAsPlayer(_secondPlayerViewModel.Color);
                 }
                 return _secondPlayerViewModel;
             }
         }
+        */
 
         private GameStatusViewModel _gameStatusViewModel;
         public GameStatusViewModel GameStatusViewModel
@@ -79,6 +80,17 @@ namespace TDDD49_Chess.View
                 if (_moveHistoryViewModel == null)
                     _moveHistoryViewModel = new MoveHistoryViewModel();
                 return _moveHistoryViewModel;
+            }
+        }
+
+        private GameManagerViewModel _opponentViewModel;
+        public GameManagerViewModel GameManagerViewModel
+        {
+            get
+            {
+                if (_opponentViewModel == null)
+                    _opponentViewModel = new GameManagerViewModel();
+                return _opponentViewModel;
             }
         }
     }

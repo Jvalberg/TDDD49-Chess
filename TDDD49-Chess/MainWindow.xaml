@@ -5,7 +5,7 @@
         Title="Chess" Height="900" Width="1400"
         x:Name="mainWindow">
     <Window.InputBindings>
-        <KeyBinding Command="{Binding Source={StaticResource ViewModelLocator}, Path=PlayerViewModel.NewGameCommand}" Key="N" Modifiers="Control" />
+        <KeyBinding Command="{Binding Source={StaticResource ViewModelLocator}, Path=GameManagerViewModel.ShowNewGameDialogCommand}" Key="N" Modifiers="Control" />
     </Window.InputBindings>
     <Grid>
         <Grid.Background>

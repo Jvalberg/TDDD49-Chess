@@ -26,7 +26,7 @@
                         <Setter.Value>
                             <MultiBinding Converter="{StaticResource PositionConverter}">
                                 <Binding Path="Y" />
-                                <Binding Path="SquareHeight" Source="{StaticResource ChessboardViewModel}" />
+                                <Binding Path="ChessBoardViewModel.SquareHeight" Source="{StaticResource ViewModelLocator}" />
                             </MultiBinding>
                         </Setter.Value>
                     </Setter>
@@ -34,7 +34,7 @@
                         <Setter.Value>
                             <MultiBinding Converter="{StaticResource PositionConverter}">
                                 <Binding Path="X" />
-                                <Binding Path="SquareWidth" Source="{StaticResource ChessboardViewModel}" />
+                                <Binding Path="ChessBoardViewModel.SquareWidth" Source="{StaticResource ViewModelLocator}" />
                             </MultiBinding>
                         </Setter.Value>
                     </Setter>
@@ -45,8 +45,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <view:ChessSquare Width="{Binding Path=SquareWidth, Source={StaticResource ChessboardViewModel}}"
-                                          Height="{Binding Path=SquareHeight, Source={StaticResource ChessboardViewModel}}" />
+                        <view:ChessSquare Width="{Binding Path=ChessBoardViewModel.SquareWidth, Source={StaticResource ViewModelLocator}}"
+                                          Height="{Binding Path=ChessBoardViewModel.SquareHeight, Source={StaticResource ViewModelLocator}}" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
