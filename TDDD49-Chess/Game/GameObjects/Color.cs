@@ -11,5 +11,10 @@ namespace TDDD49_Chess.Game.GameObject
         public static int NONE = -1;
         public static int WHITE = 0;
         public static int BLACK = 1;
+
+        public static Boolean IsNotColor(int color)
+        {
+            return color != WHITE && color != BLACK;
+        }
     }
 }

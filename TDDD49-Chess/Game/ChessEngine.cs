@@ -58,7 +58,7 @@ namespace TDDD49_Chess.Game
                 return false; //Cannot make a moves which puts the own player in check.
             
 
-            Move move = new Move(from, to, _board.Squares[from.X, from.Y], _board.Squares[to.X, to.Y]);
+            Move move = new Move(_moveHistory.Count() + 1, from, to, _board.Squares[from.X, from.Y], _board.Squares[to.X, to.Y]);
             makeMove(move);
             _moveHistory.Add(move);
             _turn_color = _turn_color == Color.BLACK ? Color.WHITE : Color.BLACK;
@@ -116,7 +116,7 @@ namespace TDDD49_Chess.Game
 
             resetBoard();
             
-            ChessGameChanged(new GameUpdatedArgs(null, -1));
+            ChessGameChanged(new GameUpdatedArgs(GameUpdatedTrigger.NewGame));
 
             return true;
         }
@@ -192,5 +192,25 @@ namespace TDDD49_Chess.Game
         }
 
         #endregion
+
+        public bool GenerateBoardSetup(IList<Move> moves)
+        {
+            resetBoard();
+            foreach(var move in moves)
+            {
+                makeMove(move);
+                _moveHistory.Add(move);
+            }
+            if(moves.Count % 2 == 0)
+            {
+                _turn_color = Color.WHITE;
+            }
+            else
+            {
+                _turn_color = Color.BLACK;
+            }
+            ChessGameChanged(new GameUpdatedArgs(GameUpdatedTrigger.BoardUpdate));
+            return true;
+        }
     }
 }

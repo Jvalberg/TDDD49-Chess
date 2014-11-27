@@ -14,6 +14,7 @@ using TDDD49_Chess.Game;
 using TDDD49_Chess.Game.GameObject;
 using TDDD49_Chess.Game.Players;
 using TDDD49_Chess.View;
+using TDDD49_Chess.View.Persistor;
 
 namespace TDDD49_Chess
 {
@@ -22,12 +23,15 @@ namespace TDDD49_Chess
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private Persistor GLOBAL_PERSISTOR;
         public MainWindow()
         {
             InitializeComponent();
 
             //This is where the view is hooked up with the game.
             //Adds the human player
+            GLOBAL_PERSISTOR = new Persistor();
         }
     }
 }

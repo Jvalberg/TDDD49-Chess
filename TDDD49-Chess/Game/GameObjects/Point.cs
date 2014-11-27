@@ -18,5 +18,28 @@ namespace TDDD49_Chess.Game.GameObject
             _x = x;
             _y = y;
         }
+
+        public String ToString()
+        {
+            return X + ";" + Y;
+        }
+        public static Point FromString(String s)
+        {
+            var values = s.Split(';');
+            if (values.Length == 2)
+            {
+                try
+                {
+                    int x = Convert.ToInt32(values[0]);
+                    int y = Convert.ToInt32(values[1]);
+                    return new Point(x, y);
+                }
+                catch(Exception e)
+                {
+
+                }
+            }
+            return new Point(-1, -1);
+        }
     }
 }

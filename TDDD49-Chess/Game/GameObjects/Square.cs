@@ -23,5 +23,33 @@ namespace TDDD49_Chess.Game.GameObject
         {
             return new Square(Pieces.NONE, GameObject.Color.NONE);
         }
+
+        public String ToString()
+        {
+            return Piece + ";" + Color;
+        }
+
+        public static Square FromString(String s)
+        {
+            var values = s.Split(';');
+            if (values.Length == 2)
+            {
+                try
+                {
+                    int piece = Convert.ToInt32(values[0]);
+                    if (Pieces.IsNotPiece(piece))
+                        piece = Pieces.NONE;
+                    int color = Convert.ToInt32(values[1]);
+                    if (TDDD49_Chess.Game.GameObject.Color.IsNotColor(color))
+                        color = TDDD49_Chess.Game.GameObject.Color.NONE;
+                    return new Square(piece, color);
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+            return Square.Empty();
+        }
     }
 }

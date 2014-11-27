@@ -65,7 +65,7 @@ namespace TDDD49_Chess.Game.Rules
 
         private bool insideBoardBounds(Point point)
         {
-            return point.Y >= Board.BLACK_START_PAWN_ROW && point.Y <= Board.WHITE_START_PAWN_ROW && point.X >= 0 && point.X <= 7;
+            return point.Y >= 0 && point.Y <= 7 && point.X >= 0 && point.X <= 7;
         }
     }
 }

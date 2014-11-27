@@ -64,6 +64,13 @@
     <Compile Include="Game\GameObjects\Color.cs" />
     <Compile Include="Game\GameObjects\Move.cs" />
     <Compile Include="Game\IChessEngine.cs" />
+    <Compile Include="Game\Persistance\DataStorageChangedEventArgs.cs" />
+    <Compile Include="Game\Persistance\DataStorageListener.cs" />
+    <Compile Include="Game\Persistance\DataStore.cs" />
+    <Compile Include="Game\Persistance\IDataStorageListener.cs" />
+    <Compile Include="Game\Persistance\IDataStore.cs" />
+    <Compile Include="Game\Persistance\IDataPersistor.cs" />
+    <Compile Include="Game\Persistance\DataPersistor.cs" />
     <Compile Include="Game\Players\AIChessPlayer.cs" />
     <Compile Include="Game\Players\ChessObserver.cs" />
     <Compile Include="Game\Players\HumanChessPlayer.cs" />
@@ -112,6 +119,7 @@
       <DependentUpon>MoveHistoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MoveHistoryViewModel.cs" />
+    <Compile Include="View\Persistor\Persistor.cs" />
     <Compile Include="View\PlayerViewModel.cs" />
     <Compile Include="View\Utilities\MouseEventToCommand.cs" />
     <Compile Include="View\Commands\RelayCommand.cs" />

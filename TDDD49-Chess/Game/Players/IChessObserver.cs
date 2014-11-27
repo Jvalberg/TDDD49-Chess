@@ -8,6 +8,14 @@ using TDDD49_Chess.Game.Rules;
 
 namespace TDDD49_Chess.Game.Players
 {
+    public enum GameUpdatedTrigger 
+    {
+        None,
+        MovedPiece,
+        BoardUpdate,
+        NewGame
+    };
+
     /// <summary>
     /// If i ever want to add flags to the game updated.
     /// </summary>
@@ -16,11 +24,24 @@ namespace TDDD49_Chess.Game.Players
         private Move move;
         private int _turn_color;
 
+        public GameUpdatedTrigger Trigger {get; set;}
+
+        public GameUpdatedArgs()
+        {
+            Trigger = GameUpdatedTrigger.None;
+        }
+
+        public GameUpdatedArgs(GameUpdatedTrigger trigger)
+        {
+            Trigger = trigger;
+        }
+
         public GameUpdatedArgs(Move move, int _turn_color)
         {
             // TODO: Complete member initialization
             this.move = move;
             this._turn_color = _turn_color;
+            Trigger = GameUpdatedTrigger.MovedPiece;
         }
 
     }
