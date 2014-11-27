@@ -20,8 +20,23 @@ namespace TDDD49_Chess.Game.Persistance
             get { return _dataStorageListener; }
         }
 
-        private bool _performedRecentDataStorageChange = false;
 
+
+        private object _lock = new object();
+        private bool _performedRecentDataStorageChange = false;
+        private void setPerformedRecentDataStorageChange(bool value)
+        {
+            lock(_lock)
+            {
+                _performedRecentDataStorageChange = value;
+            }
+        }
+
+        private bool getPerformedRecentDataStorageChange()
+        {
+            lock (_lock)
+                return _performedRecentDataStorageChange;
+        }
 
         public DataPersistor()
         {
@@ -72,8 +87,9 @@ namespace TDDD49_Chess.Game.Persistance
             {
                 try
                 {
-                    _performedRecentDataStorageChange = true;
+                    _dataStorageListener.PausListening();
                     _dataStore.AddState(_chessEngine);
+                    _dataStorageListener.ResumeListening();
                     
                 }
                 catch(Exception e)
@@ -104,8 +120,9 @@ namespace TDDD49_Chess.Game.Persistance
             {
                 try
                 {
-                    _performedRecentDataStorageChange = true;
+                    _dataStorageListener.PausListening();
                     _dataStore.Clear();
+                    _dataStorageListener.ResumeListening();
                 }
                 catch(Exception e)
                 {
@@ -133,14 +150,8 @@ namespace TDDD49_Chess.Game.Persistance
 
         void _dataStorageListener_DataStorageChanged(object sender, DataStorageChangedEventArgs e)
         {
-            if (!_performedRecentDataStorageChange)
-            {
-                _dataStore.Load(_chessEngine);
-            }
-            _performedRecentDataStorageChange = false;
+            _dataStore.Load(_chessEngine);
         }
-
-
 
         public void SaveMetadata(string identifier, string value)
         {

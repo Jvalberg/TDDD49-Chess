@@ -73,5 +73,18 @@ namespace TDDD49_Chess.Game.Persistance
                 handler(this, e);
             }
         }
+
+
+        public void PausListening()
+        {
+            if (_fileSystemWatcher != null)
+                _fileSystemWatcher.EnableRaisingEvents = false;
+        }
+
+        public void ResumeListening()
+        {
+            if (_fileSystemWatcher != null)
+                _fileSystemWatcher.EnableRaisingEvents = true;
+        }
     }
 }

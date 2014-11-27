@@ -17,5 +17,7 @@ namespace TDDD49_Chess.Game.Persistance
     {
         event DataStorageChangedHandler DataStorageChanged;
         void ListenTo(String connectionDetails);
+        void PausListening();
+        void ResumeListening();
     }
 }
