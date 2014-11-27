@@ -31,6 +31,11 @@ namespace TDDD49_Chess
 
             //This is where the view is hooked up with the game.
             //Adds the human player
+            int min = int.MinValue;
+            Console.WriteLine(min);
+            Console.WriteLine(-min);
+            min *= -1;
+            Console.WriteLine(min);
         }
     }
 }

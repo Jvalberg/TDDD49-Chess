@@ -13,10 +13,14 @@ namespace TDDD49_Chess.AI
         private int _color;
         private Random random;
 
+        private IChessMoveAlgorithm _moveAlgorithm;
+
         public AIChessPlayer()
         {
             random = new Random();
             _color = Color.NONE;
+            //_moveAlgorithm = new ChessRandomMoveAlgorithm(this);
+            _moveAlgorithm = new ChessMinimaxMoveAlgorithm(this);
         }
 
         public override void GameUpdated(GameUpdatedArgs args)
@@ -32,32 +36,17 @@ namespace TDDD49_Chess.AI
                     {
                         if (this.IsCurrentTurn(_color))
                         {
-                            tryMakeMove();
+                            var move = _moveAlgorithm.GetNextMove(this.GetBoardCopy(), this._color);
+                            if(move != null)
+                            {
+                                this.TryMove(move.Item1, move.Item2);
+                            }
                         }
                     }
                 }
             }
         }
 
-        private void tryMakeMove()
-        {
-            var board = this.GetBoardCopy();
-            var pieces = board.GetAllPieces(_color);
-            bool successful = false;
-            do
-            {
-                var rndPiece = random.Next(pieces.Count);
-                if (rndPiece >= 0 && rndPiece < pieces.Count && pieces.Count > 0)
-                {
-                    var validMoves = this.GetRules().MovementRules.ValidMoves(board, pieces[rndPiece]);
-                    var rndMove = random.Next(validMoves.Count);
-                    if (rndMove >= 0 && rndMove < validMoves.Count && validMoves.Count > 0)
-                    {
-                        successful = this.TryMove(pieces[rndPiece], validMoves[rndMove]);
-                    }
-                }
-            } while (!successful);
-        }
 
         public void AddAI()
         {

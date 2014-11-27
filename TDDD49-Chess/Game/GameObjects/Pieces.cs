@@ -20,5 +20,19 @@ namespace TDDD49_Chess.Game.GameObject
         {
             return piece == NONE;
         }
+
+        public static int GetPieceValue(int piece)
+        {
+            switch (piece)
+            {
+                case 0: return 0;
+                case 1: return 9;
+                case 2: return 3;
+                case 3: return 3;
+                case 4: return 5;
+                case 5: return 1;
+                default: return 0;
+            }
+        }
     }
 }

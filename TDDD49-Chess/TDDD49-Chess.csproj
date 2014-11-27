@@ -59,7 +59,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AI\AIChessPlayer.cs" />
+    <Compile Include="AI\ChessRandomMoveAlgorithm.cs" />
     <Compile Include="AI\IAIChessPlayer.cs" />
+    <Compile Include="AI\IChessMoveAlgorithm.cs" />
+    <Compile Include="AI\ChessMinimaxMoveAlgorithm.cs" />
     <Compile Include="Game\ChessEngine.cs" />
     <Compile Include="Game\ChessEngineLocator.cs" />
     <Compile Include="Game\GameObjects\Board.cs" />

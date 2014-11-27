@@ -112,6 +112,7 @@ namespace TDDD49_Chess.View
             _moves = new ObservableCollection<MoveViewModel>();
             _sortedMoves = CollectionViewSource.GetDefaultView(_moves);
             _sortedMoves.SortDescriptions.Add(new SortDescription("MoveNumber", ListSortDirection.Descending));
+            GameUpdated(new GameUpdatedArgs(GameUpdatedTrigger.BoardLoaded));
         }
 
         public override void GameUpdated(GameUpdatedArgs args)

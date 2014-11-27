@@ -16,5 +16,14 @@ namespace TDDD49_Chess.Game.GameObject
         {
             return color != WHITE && color != BLACK;
         }
+
+        public static int OtherColor(int color)
+        {
+            if (color == BLACK)
+                return WHITE;
+            if (color == WHITE)
+                return BLACK;
+            return NONE;
+        }
     }
 }
