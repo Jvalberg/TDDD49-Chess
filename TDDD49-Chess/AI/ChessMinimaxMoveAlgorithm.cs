@@ -12,7 +12,7 @@ namespace TDDD49_Chess.AI
     public class ChessMinimaxMoveAlgorithm : IChessMoveAlgorithm
     {
         private IChessPlayer _player;
-        private int MAX_DEPTH = 3;
+        private int MAX_DEPTH = 1;
         private Random random;
         private int MAX_VALUE = 100000;
 
